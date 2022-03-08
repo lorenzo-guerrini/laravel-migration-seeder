@@ -1,0 +1,38 @@
+oggi iniziate a pregustare le vacanze che farete alla fine del corso creando una tabella per i pacchetti di viaggio organizzati da un’agenzia turistica.
+
+Dopo averne definito la struttura tramite una migration, inserite dei dati pseudo-reali tramite la classe Faker
+
+LARAVEL FLOWCHART
+---------------------------------
+
+CREO UN NUOVO PROGETTO LARAVEL
+composer create-project --prefer-dist laravel/laravel:^7.0 .
+
+CREO UN DATABASE
+phpmyadmin
+
+COLLEGO IL DB AL PROGETTO LARAVEL
+.env
+php artisan config:clear
+
+CREO LA TABELLA PER L’ENTITÀ CHE DEVO RAPPRESENTARE
+link lista colonne (https://laravel.com/docs/7.x/migrations#creating-columns)
+php artisan make:migration create_nomeplurale_table
+
+LANCIO LE MIGRAZIONI
+php artisan migrate
+
+CREO IL MODEL
+php artisan make:model NomeEntitaSingolare
+
+CREO IL SEEDER PER POPOLARE LA TABELLA
+php artisan make:seeder NomeEntitaPluraleTableSeeder
+
+VERIFICO IL PACCHETTO FAKER
+verifico nel file composer.json, se c’é fzaninotto aggiorno il pacchetto
+composer remove fzaninotto/faker
+composer require fakerphp/faker
+composer dump-autoload
+
+LANCIO IL SEEDER
+php artisan db:seed --class=NomeEntitaPluraleTableSeeder
